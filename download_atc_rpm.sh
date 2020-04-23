@@ -74,6 +74,8 @@ case ${1} in
     printhelp ;;
 esac
 
+RPM_URL=""
+
 # Do the release fetching information in a loop
 while [[ -z ${RPM_URL} ]] ; do
   echo "Curl Github API on ${URL} for ${1} release information"
