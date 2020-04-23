@@ -10,8 +10,8 @@ CFE_BASE="https://api.github.com/repos/F5Networks/f5-cloud-failover-extension/re
 
 VALID_COMPONENTS="do DO as3 AS3 ts TS cfe CFE"
 
-function print-help {
-  echo "Usage: fetch_atc_rpm.sh <atc_component> <component_version> <output_file>"
+function printhelp {
+  echo "Usage: download_atc_rpm.sh <atc_component> <component_version> <output_file>"
   echo "    <atc_component> should be one of the following:"
   echo "        DO/do   : Declarative Onboarding"
   echo "        AS3/as3 : Application Services 3"
@@ -24,19 +24,19 @@ function print-help {
 
 # Check if necessary input params are set
 if [[ -z "${1}" || -z "${2}" || -z "${3}" ]]; then
-  print-help
+  printhelp
 fi
 
 # Check of component has been set correctly
 if ! [[ ${VALID_COMPONENTS} == *${1}* ]]; then
   echo "Wrong component value '${1}', valid value are [${VALID_COMPONENTS}]"
-  print-help
+  printhelp
 fi
 
 # Check if the version matches expected format
 if ! [[ "${2}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then 
   echo "Wrong version value '${2}', valid format is a.b.c (a b c are numbers only)"
-  print-help
+  printhelp
 fi
 
 OUTPUT_FOLDER=$(dirname ${3})
@@ -45,19 +45,19 @@ OUTPUT_FILE=$(basename ${3})
 # Check if the output folder exists 
 if ! [[ -d ${OUTPUT_FOLDER} ]] ; then
   echo "Output folder ${OUTPUT_FOLDER} does not exist on your filesystem"
-  print-help
+  printhelp
 fi
 
 # Check if the output folder is writable 
 if ! [[ -w ${OUTPUT_FOLDER} ]] ; then
   echo "Output folder ${OUTPUT_FOLDER} is not writable on your filesystem"
-  print-help
+  printhelp
 fi
 
 # Check if the output file is valid 
 if [[ -z ${OUTPUT_FILE} ]] ; then
   echo "Output file ${OUTPUT_FILE} is not valid"
-  print-help
+  printhelp
 fi
 
 # Compose the download URL
@@ -71,7 +71,7 @@ case ${1} in
   CFE | cfe)
     URL="${CFE_BASE}${2}" ;;
   *)
-    print-help ;;
+    printhelp ;;
 esac
 
 # Do the release fetching information in a loop

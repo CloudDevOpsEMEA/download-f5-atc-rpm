@@ -16,8 +16,8 @@ In order to make this more easy, this bash script has been created, which includ
 In order to use this script, you can just run it. If the necessary input parameters are not provided correctly, it will give a helper message
 
 ```console
-# ./fetch_atc_rpm.sh                    
-Usage: fetch_atc_rpm.sh <atc_component> <component_version> <output_file>
+# ./download_atc_rpm.sh                    
+Usage: download_atc_rpm.sh <atc_component> <component_version> <output_file>
     <atc_component> should be one of the following:
         DO/do   : Declarative Onboarding
         AS3/as3 : Application Services 3
@@ -30,25 +30,25 @@ Usage: fetch_atc_rpm.sh <atc_component> <component_version> <output_file>
 To download a specific RPM for one of the ATC components
 
 ```console
-# ./fetch_atc_rpm.sh do 1.12.0 /tmp/do.rpm
+# ./download_atc_rpm.sh do 1.12.0 /tmp/do.rpm
 Curl Github API on https://api.github.com/repos/F5Networks/f5-declarative-onboarding/releases/tags/v1.12.0 for do release information
 Downloading do RPM file from Github into /tmp/do.rpm
 Downloaded do Github release : https://github.com/F5Networks/f5-declarative-onboarding/releases/download/v1.12.0/f5-declarative-onboarding-1.12.0-1.noarch.rpm
 Resulting do RPM file stored : /tmp/do.rpm
 
-# ./fetch_atc_rpm.sh as3 3.19.0 /tmp/as3.rpm
+# ./download_atc_rpm.sh as3 3.19.0 /tmp/as3.rpm
 Curl Github API on https://api.github.com/repos/F5Networks/f5-appsvcs-extension/releases/tags/v3.19.0 for as3 release information
 Downloading as3 RPM file from Github into /tmp/as3.rpm
 Downloaded as3 Github release : https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.19.0/f5-appsvcs-3.19.0-4.noarch.rpm
 Resulting as3 RPM file stored : /tmp/as3.rpm
 
-# ./fetch_atc_rpm.sh ts 1.11.0 /tmp/ts.rpm
+# ./download_atc_rpm.sh ts 1.11.0 /tmp/ts.rpm
 Curl Github API on https://api.github.com/repos/F5Networks/f5-telemetry-streaming/releases/tags/v1.11.0 for ts release information
 Downloading ts RPM file from Github into /tmp/ts.rpm
 Downloaded ts Github release : https://github.com/F5Networks/f5-telemetry-streaming/releases/download/v1.11.0/f5-telemetry-1.11.0-1.noarch.rpm
 Resulting ts RPM file stored : /tmp/ts.rpm
 
-# ./fetch_atc_rpm.sh cfe 1.2.0 /tmp/cfe.rpm
+# ./download_atc_rpm.sh cfe 1.2.0 /tmp/cfe.rpm
 Curl Github API on https://api.github.com/repos/F5Networks/f5-cloud-failover-extension/releases/tags/v1.2.0 for cfe release information
 Downloading cfe RPM file from Github into /tmp/cfe.rpm
 Downloaded cfe Github release : https://github.com/F5Networks/f5-cloud-failover-extension/releases/download/v1.2.0/f5-cloud-failover-1.2.0-0.noarch.rpm
