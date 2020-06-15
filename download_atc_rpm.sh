@@ -54,6 +54,18 @@ if ! [[ -w ${OUTPUT_FOLDER} ]] ; then
   printhelp
 fi
 
+# Check if output file is folder
+if [[ -d ${3} ]] ; then
+  echo "Output file ${OUTPUT_FILE} is a folder"
+  printhelp
+fi
+
+# Check if file already exists
+if [[ -f ${3} ]] ; then
+  echo "Output file ${OUTPUT_FILE} already exists"
+  printhelp
+fi
+
 # Check if the output file is valid 
 if [[ -z ${OUTPUT_FILE} ]] ; then
   echo "Output file ${OUTPUT_FILE} is not valid"
@@ -90,7 +102,7 @@ while [[ -z ${RPM_URL} ]] ; do
 done
 
 # Do the rpm download in a loop
-while ! [[ -f ${3} ]] ; do
+while ! [[ -f ${3} ]] ; do # This creates a bug if the file exists in wich curl wont overwrite
   echo "Downloading ${1} RPM file from Github into ${3}"
   curl -s -L -o ${3} ${RPM_URL}
   sleep 1
