@@ -23,7 +23,7 @@ Usage: download_atc_rpm.sh <atc_component> <component_version> <output_file>
         AS3/as3 : Application Services 3
         TS/ts   : Telemetry Streaming
         CFE/cfe : Cloud Failover Extension
-    <component_version> the version like a.b.c (with a b and c numbers only)
+    <component_version> the version like a.b.c (with a b and c numbers only) or 'latest'
     <output_file> absolute output file path in a pre-existing folder
 ```
 
@@ -40,6 +40,12 @@ Resulting do RPM file stored : /tmp/do.rpm
 Curl Github API on https://api.github.com/repos/F5Networks/f5-appsvcs-extension/releases/tags/v3.19.0 for as3 release information
 Downloading as3 RPM file from Github into /tmp/as3.rpm
 Downloaded as3 Github release : https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.19.0/f5-appsvcs-3.19.0-4.noarch.rpm
+Resulting as3 RPM file stored : /tmp/as3.rpm
+
+# ./download_atc_rpm.sh as3 latest /tmp/as3.rpm
+Curl Github API on https://api.github.com/repos/F5Networks/f5-appsvcs-extension/releases/latest for as3 release information
+Downloading as3 RPM file from Github into /tmp/as3.rpm
+Downloaded as3 Github release : https://github.com/F5Networks/f5-appsvcs-extension/releases/download/3.20.0/f5-appsvcs-3.20.0-3.noarch.rpm
 Resulting as3 RPM file stored : /tmp/as3.rpm
 
 # ./download_atc_rpm.sh ts 1.11.0 /tmp/ts.rpm
