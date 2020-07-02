@@ -16,15 +16,19 @@ In order to make this more easy, this bash script has been created, which includ
 In order to use this script, you can just run it. If the necessary input parameters are not provided correctly, it will give a helper message
 
 ```console
-# ./download_atc_rpm.sh                    
+# ./download_atc_rpm.sh               
 Usage: download_atc_rpm.sh <atc_component> <component_version> <output_file>
     <atc_component> should be one of the following:
         DO/do   : Declarative Onboarding
         AS3/as3 : Application Services 3
         TS/ts   : Telemetry Streaming
         CFE/cfe : Cloud Failover Extension
-    <component_version> the version like a.b.c (with a b and c numbers only)
-    <output_file> absolute output file path in a pre-existing folder
+    <component_version> the version like a.b.c (with a b and c numbers only) or the string 'latest'
+    <output_file> absolute output file path in a pre-existing folder (eg. /fullpath/filename.rpm)
+Return values:
+    0 if succesfull
+    1 if missing or invalid arguments
+    2 if <component_version> does not exist
 ```
 
 To download a specific RPM for one of the ATC components
@@ -42,6 +46,12 @@ Downloading as3 RPM file from Github into /tmp/as3.rpm
 Downloaded as3 Github release : https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.19.0/f5-appsvcs-3.19.0-4.noarch.rpm
 Resulting as3 RPM file stored : /tmp/as3.rpm
 
+# ./download_atc_rpm.sh as3 latest /tmp/as3.rpm
+Curl Github API on https://api.github.com/repos/F5Networks/f5-appsvcs-extension/releases/latest for as3 release information
+Downloading as3 RPM file from Github into /tmp/as3.rpm
+Downloaded as3 Github release : https://github.com/F5Networks/f5-appsvcs-extension/releases/download/3.20.0/f5-appsvcs-3.20.0-3.noarch.rpm
+Resulting as3 RPM file stored : /tmp/as3.rpm
+
 # ./download_atc_rpm.sh ts 1.11.0 /tmp/ts.rpm
 Curl Github API on https://api.github.com/repos/F5Networks/f5-telemetry-streaming/releases/tags/v1.11.0 for ts release information
 Downloading ts RPM file from Github into /tmp/ts.rpm
@@ -55,10 +65,10 @@ Downloaded cfe Github release : https://github.com/F5Networks/f5-cloud-failover-
 Resulting cfe RPM file stored : /tmp/cfe.rpm
 
 # ls -la /tmp/*.rpm
--rw-r--r--  1 me  wheel  14764987 Apr 23 18:42 /tmp/as3.rpm
--rw-r--r--  1 me  wheel  25238206 Apr 23 18:43 /tmp/cfe.rpm
--rw-r--r--  1 me  wheel   1594337 Apr 23 18:42 /tmp/do.rpm
--rw-r--r--  1 me  wheel   9625313 Apr 23 18:43 /tmp/ts.rpm
+-rw-r--r--  1 user  group  14764987 Apr 23 18:42 /tmp/as3.rpm
+-rw-r--r--  1 user  group  25238206 Apr 23 18:43 /tmp/cfe.rpm
+-rw-r--r--  1 user  group   1594337 Apr 23 18:42 /tmp/do.rpm
+-rw-r--r--  1 user  group   9625313 Apr 23 18:43 /tmp/ts.rpm
 ```
 
 ## Extra Information
